@@ -1,3 +1,5 @@
+
+import { useAuth0 } from '@auth0/auth0-react';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
@@ -19,6 +21,7 @@ export default function App() {
         <Router>
             <Header />
             <Routes>
+                <Route exact path='/' element ={<Landing/>}/>
                 <Route path="/home" element={<Home />} />
                 <Route path="/signup" element={<SignUp />} />
                 {/* Add IngredientForm in one of the routes or in the Home component */}
@@ -26,4 +29,21 @@ export default function App() {
             </Routes>
         </Router>
     );
+}
+
+function Landing() {
+const { isAuthenticated } = useAuth0();
+if (isAuthenticated) {
+    return <UserProfile />;
+    
+}else{
+    return <h1>Please Sign Up</h1>
+}
+
+}
+
+function UserProfile() {
+    return(
+    <h1>UserProfile</h1>
+    )
 }

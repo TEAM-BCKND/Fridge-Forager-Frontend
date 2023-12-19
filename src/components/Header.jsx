@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown , FormControl, Button, Form} from 'react-bootstrap';
 import useLogin from '../hooks/useLogin';
-
+import AuthButtons from '../Auth/AuthButtons';
 
 
 export default function Header(){
@@ -31,14 +31,8 @@ export default function Header(){
                 <Nav.Link as={Link} to="/signup">SIGN UP</Nav.Link>
                 <Nav.Link as={Link} to="/ingredient-search">Search</Nav.Link>
             </Nav>
-            <Form className="d-flex" onSubmit={handleSubmit}>
-            {/* <FormControl type="email" placeholder="Email" className="mr-sm-2"/>
-            <FormControl type="password" placeholder="Password" className="mr-sm-2" /> */}
-            <FormControl type="email" placeholder="Email" className="mr-sm-2" value={email} onChange={handleEmailChange}/>
-            <FormControl type="password" placeholder="Password" className="mr-sm-2" value={password} onChange={handlePasswordChange} />
-                <Button variant="outline-success" type="submit">Log In</Button>
-            </Form>
             <Nav>
+            <AuthButtons/>
                 <NavDropdown title="More" id="basic-nav-dropdown" align="end">
                     <NavDropdown.Item href="#action/3.1">Something</NavDropdown.Item>
                     <NavDropdown.Item href="#action/3.2">Happens</NavDropdown.Item>
