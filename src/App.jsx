@@ -7,18 +7,14 @@ import Search from './components/Search';
 
 export default function App() {
     return (
-        <div>
-            <Router>
+        <Router>
             <Header />
             <Routes>
                 <Route path="/" element={<div>Home Page Content</div>} />
                 <Route path="/signup" element={<SignUp />} />
-                <Route path="/Gallery" element={<div>Gallery? Maybe Idk</div>} />
+                <Route path="/search" element={<Search />} />
             </Routes>
         </Router>
-        <h1>Your App</h1>
-        <Search />
-        {/* Other components or content */}
-      </div>
-    );
+        // {/* Other components or content */}
+    )
 }
