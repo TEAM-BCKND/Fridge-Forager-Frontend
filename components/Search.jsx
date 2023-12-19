@@ -8,7 +8,7 @@ const Search = () => {
   async function handleSearch ()  {
     try {
       
-      const apiUrl = 'http://localhost:3000/api/edamam-recipes';
+      const apiUrl = 'https://fridge-forager-backend.onrender.com/api/edamam-recipes';
 
       // Make a GET request to your backend with the entered ingredients
       const response = await axios.get(`${apiUrl}?ingredients=${encodeURIComponent(ingredients)}`);

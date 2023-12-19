@@ -76,13 +76,13 @@ Fridge Forager is an application where a user can input what ingredients they ha
 
 ### DOMAIN MODELING
 
-![DOMAIN MODEL](domain-model.png)
+![DOMAIN MODEL](img/domain-model.png)
 
 ### WIREFRAME
 
-![wireframe](Wireframe.png)
+![wireframe](img/Wireframe.png)
 
 ### DataBase Schema Diagram
 
-![database-schema](database-schema.png)
+![database-schema](img/database-schema.png)
 
