@@ -1,14 +1,24 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import HandleSearch from './HandleSearch';
 
-const IngredientForm = ({ onSearch }) => {
-    const [name, setName] = useState('');
+//ChatGPT was consulted for this function
+
+const IngredientForm = () => {
     const [protein, setProtein] = useState('');
     const [vegetable, setVegetable] = useState('');
     const [starch, setStarch] = useState('');
-
+    const navigate = useNavigate();
     const handleSubmit = (event) => {
         event.preventDefault();
-        onSearch({ name, protein, vegetable, starch });
+        // Construct a query string with the ingredients
+        const queryParams = new URLSearchParams({
+            protein,
+            vegetable,
+            starch
+        }).toString();
+        // Redirect to the search route with query parameters
+        navigate(`/ingredient-search?${queryParams}`);
     };
 
     return (
@@ -43,7 +53,7 @@ const IngredientForm = ({ onSearch }) => {
                     onChange={(e) => setStarch(e.target.value)}
                     placeholder="Starch"
                 />
-                <button type="submit">Search Recipes</button>
+                <button type="submit" onClick={HandleSearch(protein, vegetable, starch)}>Search Recipes</button>
             </form>
             <div className="about-section">
                 {/* Placeholder for about me section */}

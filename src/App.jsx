@@ -25,8 +25,10 @@ export default function App() {
                 {/* <Route path="/" element={<Navigate to="/launch" />} /> */}
                 <Route path="/home" element={<Home />} />
                 <Route path="/signup" element={<SignUp />} />
+
                 <Route path="/search" element={<RenderSearch />} />
                 <Route path="/launch" element={<LaunchPage />} />
+
                 {/* Add IngredientForm in one of the routes or in the Home component */}
                 <Route path="/ingredient-search" element={<IngredientForm onSearch={HandleSearch} />} />
             </Routes>
