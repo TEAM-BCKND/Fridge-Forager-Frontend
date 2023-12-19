@@ -1,21 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import SignUp from './components/SignUp';  
-import 'bootstrap/dist/css/bootstrap.min.css';
+import SignUp from './components/SignUp';
 import Search from './components/Search';
 import Home from './components/Home';
+import IngredientForm from './components/IngredientForm';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function App() {
+    const [recipes, setRecipes] = useState([]);
+
+    //Calls API to fetch recipes and updates with results
+    //Use '/ingredient-search' in search bar
+    const handleSearch = async (ingredients) => {
+    };
+
     return (
         <Router>
             <Header />
             <Routes>
-                <Route path="/home" element={<Home/>} />
-                <Route path="/signup" element={<SignUp/>} />
-                <Route path="/search" element={<Search/>} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/search" element={<Search />} />
+                {/* Add IngredientForm in one of the routes or in the Home component */}
+                <Route path="/ingredient-search" element={<IngredientForm onSearch={handleSearch} />} />
             </Routes>
         </Router>
-        // {/* Other components or content */}
-    )
+    );
 }
