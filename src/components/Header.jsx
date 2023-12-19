@@ -19,7 +19,7 @@ export default function Header(){
 
     return (
         <Navbar variant="dark" bg="dark" expand="lg">
-            <Navbar.Brand href="/">
+            <Navbar.Brand href="/home">
                 <img src={placeHolderImg} 
                 alt="Logo" 
                 width="180" 
@@ -27,7 +27,7 @@ export default function Header(){
                 className="d-inline-block align-top" />
                 </Navbar.Brand>
             <Nav className="me-auto">
-                <Nav.Link as={Link} to="/">Home</Nav.Link>
+                <Nav.Link as={Link} to="/home">Home</Nav.Link>
                 <Nav.Link as={Link} to="/signup">SIGN UP</Nav.Link>
                 <Nav.Link as={Link} to="/search">Search</Nav.Link>
             </Nav>
