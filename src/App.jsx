@@ -6,6 +6,7 @@ import Search from './components/Search';
 import Home from './components/Home';
 import IngredientForm from './components/IngredientForm';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ProfilePage from './components/ProfilePage';
 
 export default function App() {
     const [recipes, setRecipes] = useState([]);
@@ -24,6 +25,7 @@ export default function App() {
                 <Route path="/search" element={<Search />} />
                 {/* Add IngredientForm in one of the routes or in the Home component */}
                 <Route path="/ingredient-search" element={<IngredientForm onSearch={handleSearch} />} />
+                <Route path="/profilepage" element={<ProfilePage/>} />
             </Routes>
         </Router>
     );

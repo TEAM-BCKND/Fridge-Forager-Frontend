@@ -30,6 +30,7 @@ export default function Header(){
                 <Nav.Link as={Link} to="/home">Home</Nav.Link>
                 <Nav.Link as={Link} to="/signup">SIGN UP</Nav.Link>
                 <Nav.Link as={Link} to="/search">Search</Nav.Link>
+                <Nav.Link as={Link} to="/profilepage">Profile Page</Nav.Link>
             </Nav>
             <Form className="d-flex" onSubmit={handleSubmit}>
             {/* <FormControl type="email" placeholder="Email" className="mr-sm-2"/>
