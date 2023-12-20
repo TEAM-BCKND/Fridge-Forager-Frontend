@@ -14,7 +14,7 @@ const footerStyle = {
     color: '#fff',
     textAlign: 'center',
     padding: '1rem',
-    position: 'fixed',
+    position: 'relative',
     bottom: '0',
     width: '100%',
 };

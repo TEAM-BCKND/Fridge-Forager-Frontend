@@ -3,16 +3,15 @@ import { useAuth0 } from '@auth0/auth0-react';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import SignUp from './components/SignUp';
-import Home from './components/Home';
 import IngredientForm from './components/IngredientForm';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ProfilePage from './components/ProfilePage';
 import HandleSearch from './components/HandleSearch';
-
+import './App.css';
 import LaunchPage from './components/LaunchPage';
 import Footer from './components/Footer';
 import RenderRecipes from './components/RenderRecipes';
+import Gallery from './components/Gallery';
 
 export default function App() {
     const [recipes, setRecipes] = useState([]);
@@ -23,24 +22,27 @@ export default function App() {
     };
 
     return (
-        <Router>
-            <Header />
-            <Routes>
-                <Route exact path='/' element={<Landing />} />
-                <Route path="/home" element={<Home />} />
-                <Route path="/signup" element={<SignUp />} />
+        <div>
+            <Router>
+                <Header />
+                <div className="main-content">
+                <Routes>
+                    <Route exact path='/' element={<LaunchPage />} />
+                    <Route path="/home" element={<LaunchPage />} />
 
-                <Route path="/search" element={<HandleSearch />} />
-                <Route path="/launch" element={<LaunchPage />} />
-                <Route path="/RenderRecipes" element={<RenderRecipes />} />
-                {/* Add IngredientForm in one of the routes or in the Home component */}
+                    <Route path="/search" element={<HandleSearch />} />
+                    <Route path="/gallery" element={<Gallery />} />
+                    <Route path="/RenderRecipes" element={<RenderRecipes />} />
+                    {/* Add IngredientForm in one of the routes or in the Home component */}
 
-                <Route path="/ingredient-search" element={<IngredientForm onSearch={handleSearch} />} />
-                <Route path="/profilepage" element={<ProfilePage />} />
+                    <Route path="/ingredient-search" element={<IngredientForm onSearch={handleSearch} />} />
+                    <Route path="/profilepage" element={<ProfilePage />} />
 
-            </Routes>
+                </Routes>
+                </div>
+            </Router>
             <Footer />
-        </Router>
+        </div>
     );
 }
 

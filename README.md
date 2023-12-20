@@ -85,4 +85,3 @@ Fridge Forager is an application where a user can input what ingredients they ha
 ### DataBase Schema Diagram
 
 ![database-schema](img/database-schema.png)
-
