@@ -9,7 +9,9 @@ const IngredientForm = () => {
     const [vegetable, setVegetable] = useState('');
     const [starch, setStarch] = useState('');
     const navigate = useNavigate();
+   
     const handleSubmit = (event) => {
+        console.log('Submitting form...');
         event.preventDefault();
         // Construct a query string with the ingredients
 
@@ -54,7 +56,7 @@ const IngredientForm = () => {
                     onChange={(e) => setStarch(e.target.value)}
                     placeholder="Starch"
                 />
-                <button type="submit" onClick={HandleSearch(protein, vegetable, starch)}>Search Recipes</button>
+                <button type="submit" >Search Recipes</button>
             </form>
             <div className="about-section">
                 {/* Placeholder for about me section */}
