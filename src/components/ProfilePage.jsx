@@ -2,6 +2,7 @@ import React, { useRef , useState } from 'react';
 import './ProfilePage.css';
 import RecipeUploadModal from './RecipeUploadModal';
 import Carousel from 'react-bootstrap/Carousel';
+import { useAuth0 } from '@auth0/auth0-react';
 
 export default function ProfilePage() {
 
@@ -9,6 +10,9 @@ export default function ProfilePage() {
 
     const fileInputRef = useRef(null);
     const recipeInputRef = useRef(null);
+
+    const { user } = useAuth0();
+    const { name: auth0Name, picture: auth0Picture } = user || {};
 
     const handleRecipeSubmit = (recipeData) => {
         console.log(recipeData);
