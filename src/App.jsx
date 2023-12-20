@@ -9,7 +9,7 @@ import IngredientForm from './components/IngredientForm';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ProfilePage from './components/ProfilePage';
 import HandleSearch from './components/HandleSearch';
-import RenderSearch from './components/RenderSearch';
+
 import LaunchPage from './components/LaunchPage';
 import Footer from './components/Footer';
 import RenderRecipes from './components/RenderRecipes';
@@ -30,14 +30,12 @@ export default function App() {
                 <Route path="/home" element={<Home />} />
                 <Route path="/signup" element={<SignUp />} />
 
-                <Route path="/search" element={<RenderSearch />} />
+                <Route path="/search" element={<HandleSearch />} />
                 <Route path="/launch" element={<LaunchPage />} />
                 <Route path="/RenderRecipes" element={<RenderRecipes />} />
                 {/* Add IngredientForm in one of the routes or in the Home component */}
-
                 <Route path="/ingredient-search" element={<IngredientForm onSearch={handleSearch} />} />
                 <Route path="/profilepage" element={<ProfilePage />} />
-
             </Routes>
             <Footer />
         </Router>

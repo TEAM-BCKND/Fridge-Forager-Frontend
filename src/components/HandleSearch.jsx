@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import RecipeList from './RecipeList'
-import { useHistory } from'react-router-dom';
+
 
 const SearchResults = () => {
     const [searchResults, setSearchResults] = useState([]);
     const [searchParams] = useSearchParams();
-    const history = useHistory();
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -30,10 +30,7 @@ const SearchResults = () => {
 
                 // Redirect to RenderRecipes page with search results as a state
                 if (response.data.recipes.length > 0) {
-                    history.push({
-                        pathname: '/RenderRecipes',
-                        state: { searchResults: response.data.recipes },
-                    });
+                    navigate('/RenderRecipes', { state: { searchResults: response.data.recipes } });
                 }
 
             } catch (error) {
