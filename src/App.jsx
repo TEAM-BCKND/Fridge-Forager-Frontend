@@ -34,7 +34,7 @@ export default function App() {
                 <Route path="/launch" element={<LaunchPage />} />
 
                 {/* Add IngredientForm in one of the routes or in the Home component */}
-                <Route path="/ingredient-search" element={<IngredientForm onSearch={HandleSearch} />} />
+
 
                 <Route path="/ingredient-search" element={<IngredientForm onSearch={handleSearch} />} />
                 <Route path="/profilepage" element={<ProfilePage/>} />
@@ -49,7 +49,7 @@ export default function App() {
 function Landing() {
 const { isAuthenticated } = useAuth0();
 if (isAuthenticated) {
-    return <UserProfile />;
+    return <Home />;
     
 }else{
     return <h1>Please Sign Up</h1>
