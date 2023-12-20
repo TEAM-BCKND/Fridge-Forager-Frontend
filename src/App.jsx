@@ -26,18 +26,18 @@ export default function App() {
         <Router>
             <Header />
             <Routes>
-                <Route exact path='/' element ={<Landing/>}/>
+                <Route exact path='/' element={<Landing />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/signup" element={<SignUp />} />
 
                 <Route path="/search" element={<HandleSearch />} />
                 <Route path="/launch" element={<LaunchPage />} />
-
+                <Route path="/RenderRecipes" element={<RenderRecipes />} />
                 {/* Add IngredientForm in one of the routes or in the Home component */}
 
 
                 <Route path="/ingredient-search" element={<IngredientForm onSearch={handleSearch} />} />
-                <Route path="/profilepage" element={<ProfilePage/>} />
+                <Route path="/profilepage" element={<ProfilePage />} />
 
 
             </Routes>
@@ -47,18 +47,20 @@ export default function App() {
 }
 
 function Landing() {
-const { isAuthenticated } = useAuth0();
-if (isAuthenticated) {
-    return <Home />;
-    
-}else{
-    return <h1>Please Sign Up</h1>
-}
+
+    const { isAuthenticated } = useAuth0();
+    if (isAuthenticated) {
+        return <UserProfile />;
+
+    } else {
+        return <h1>Please Sign Up</h1>
+    }
+
 
 }
 
 function UserProfile() {
-    return(
-    <h1>UserProfile</h1>
+    return (
+        <h1>UserProfile</h1>
     )
 }

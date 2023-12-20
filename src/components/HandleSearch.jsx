@@ -3,9 +3,13 @@ import axios from 'axios';
 import { useSearchParams } from 'react-router-dom';
 import RecipeList from './RecipeList'
 
+
 const SearchResults = () => {
     const [searchResults, setSearchResults] = useState([]);
     const [searchParams] = useSearchParams();
+    const history = useHistory();
+
+
     useEffect(() => {
         // Function to handle the search
         const handleSearch = async () => {
@@ -23,6 +27,15 @@ const SearchResults = () => {
                 console.log('Searching recipes with query:', queryString);
                 const response = await axios.get(apiUrl);
                 setSearchResults(response.data.recipes); // Assuming the response contains recipe data
+
+                // Redirect to RenderRecipes page with search results as a state
+                if (response.data.recipes.length > 0) {
+                    history.push({
+                        pathname: '/RenderRecipes',
+                        state: { searchResults: response.data.recipes },
+                    });
+                }
+
             } catch (error) {
                 console.error('Error searching recipes:', error);
             }
@@ -34,10 +47,10 @@ const SearchResults = () => {
     }, [searchParams]);
     console.log(searchResults)
     return (
-      <div>
-        
-        <RecipeList searchResults={searchResults} />
-      </div>
+        <div>
+
+            <RecipeList searchResults={searchResults} />
+        </div>
     );
 };
 export default SearchResults;
