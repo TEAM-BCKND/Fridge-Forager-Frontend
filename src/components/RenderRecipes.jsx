@@ -51,7 +51,7 @@ const RenderRecipes = () => {
         <div>
             <h2>Rendered Recipes</h2>
             {isLoading ? (
-                <p>Loading recipes...</p>
+                <p>Loading recipes....</p>
             ) : error ? (
                 <p className="error-message">{error}</p>
             ) : (
