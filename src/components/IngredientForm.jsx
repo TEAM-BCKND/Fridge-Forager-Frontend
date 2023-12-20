@@ -1,40 +1,33 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import HandleSearch from './HandleSearch';
-
-//ChatGPT was consulted for this function
+import axios from 'axios';
+import RecipeList from './RecipeList';
 
 const IngredientForm = () => {
     const [protein, setProtein] = useState('');
     const [vegetable, setVegetable] = useState('');
     const [starch, setStarch] = useState('');
-    const navigate = useNavigate();
-    const handleSubmit = (event) => {
+    const [recipes, setRecipes] = useState([]);
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        // Construct a query string with the ingredients
 
         const queryParams = new URLSearchParams({
             protein,
             vegetable,
             starch
         }).toString();
-        // Redirect to the search route with query parameters
-        navigate(`/RenderRecipes?${queryParams}`);
+
+        try {
+            const apiUrl = `https://fridge-forager-backend.onrender.com/api/edamam-recipes?ingredients=${queryParams}`;
+            const response = await axios.get(apiUrl);
+            setRecipes(response.data.recipes);
+        } catch (error) {
+            console.error('Error fetching recipes:', error);
+        }
     };
 
     return (
-        <div className="search-container">
-            <div className="profile-section">
-                <div className="profile-picture">
-                    {/* Placeholder for profile picture */}
-                </div>
-                <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Name"
-                />
-            </div>
+        <div className="ingredient-form-container">
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -54,16 +47,11 @@ const IngredientForm = () => {
                     onChange={(e) => setStarch(e.target.value)}
                     placeholder="Starch"
                 />
-                <button type="submit" onClick={() => HandleSearch(protein, vegetable, starch)}>Search Recipes</button>
-
+                <button type="submit">Search Recipes</button>
             </form>
-            <div className="about-section">
-                {/* Placeholder for about me section */}
-            </div>
+            <RecipeList searchResults={recipes} />
         </div>
     );
 };
 
 export default IngredientForm;
-
-
