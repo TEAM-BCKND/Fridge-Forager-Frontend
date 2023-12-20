@@ -19,7 +19,7 @@ const SearchResults = () => {
                 if (starch) query.push(`starch:${starch}`);
                 // Join the query terms with commas, and encode them for the URL
                 const queryString = encodeURIComponent(query.join(','));
-                const apiUrl = `http://localhost:3000/api/edamam-recipes?ingredients=${queryString}`;
+                const apiUrl = `https://fridge-forager-backend.onrender.com/api/edamam-recipes?ingredients=${queryString}`;
                 console.log('Searching recipes with query:', queryString);
                 const response = await axios.get(apiUrl);
                 setSearchResults(response.data.recipes); // Assuming the response contains recipe data
