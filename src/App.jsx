@@ -25,6 +25,7 @@ export default function App() {
                 <Route path="/home" element={<Home />} />
                 <Route path="/signup" element={<SignUp />} />
                 {/* Add IngredientForm in one of the routes or in the Home component */}
+                
                 <Route path="/ingredient-search" element={<IngredientForm onSearch={HandleSearch} />} />
             </Routes>
         </Router>
