@@ -48,7 +48,7 @@ function Landing() {
 
     const { isAuthenticated } = useAuth0();
     if (isAuthenticated) {
-        return <UserProfile />;
+        return <ProfilePage />;
 
     } else {
         return <h1>Please Sign Up</h1>
@@ -57,8 +57,3 @@ function Landing() {
 
 }
 
-function UserProfile() {
-    return (
-        <h1>UserProfile</h1>
-    )
-}

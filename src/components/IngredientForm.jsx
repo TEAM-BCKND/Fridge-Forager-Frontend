@@ -14,6 +14,7 @@ const IngredientForm = () => {
         console.log('Submitting form...');
         event.preventDefault();
         // Construct a query string with the ingredients
+
         const queryParams = new URLSearchParams({
             protein,
             vegetable,

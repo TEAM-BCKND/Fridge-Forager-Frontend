@@ -18,11 +18,12 @@ const SearchResults = () => {
                 const vegetable = searchParams.get('vegetable');
                 const starch = searchParams.get('starch');
                 const query = [];
+                console.log('this is the query', query);
                 if (protein) query.push(`protein:${protein}`);
                 if (vegetable) query.push(`vegetable:${vegetable}`);
                 if (starch) query.push(`starch:${starch}`);
                 // Join the query terms with commas, and encode them for the URL
-                const queryString = encodeURIComponent(query.join('+'));
+                const queryString = encodeURIComponent(query.join(','));
                 const apiUrl = `https://fridge-forager-backend.onrender.com/api/edamam-recipes?ingredients=${queryString}`;
                 console.log('Searching recipes with query:', queryString);
                 const response = await axios.get(apiUrl);
