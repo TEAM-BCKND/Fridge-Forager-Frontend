@@ -1,5 +1,12 @@
-export default function RecipeList (props) {
-return (
-    console.log(props.searchResults)
-)
-}
+const RecipeList = ({ searchResults }) => {
+    return (
+      <div>
+        {searchResults.map((recipe, index) => (
+          <div key={index}> 
+            <div>{recipe.title}</div>
+          </div>
+        ))}
+      </div>
+    );
+  };
+  
