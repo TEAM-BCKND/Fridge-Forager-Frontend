@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-
-import RenderRecipes from './RenderRecipes';
+import RecipeList from './RecipeList'
 
 
 const SearchResults = () => {
@@ -48,7 +47,7 @@ const SearchResults = () => {
     return (
         <div>
 
-            <RenderRecipes searchResults={searchResults} />
+            <RecipeList searchResults={searchResults} />
         </div>
     );
 };
