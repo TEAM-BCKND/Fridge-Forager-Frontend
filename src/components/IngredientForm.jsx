@@ -12,6 +12,7 @@ const IngredientForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         // Construct a query string with the ingredients
+        
         const queryParams = new URLSearchParams({
             protein,
             vegetable,
@@ -53,8 +54,7 @@ const IngredientForm = () => {
                     onChange={(e) => setStarch(e.target.value)}
                     placeholder="Starch"
                 />
-                <button type="submit" onClick={() => HandleSearch(protein, vegetable, starch)}>Search Recipes</button>
-
+                <button type="submit" onClick={HandleSearch(protein, vegetable, starch)}>Search Recipes</button>
             </form>
             <div className="about-section">
                 {/* Placeholder for about me section */}
