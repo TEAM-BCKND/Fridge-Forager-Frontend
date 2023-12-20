@@ -1,0 +1,24 @@
+/* Header.css */
+
+.navbar {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.nav-links {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-around;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-links .nav-link {
+    margin-right: 15px;
+    flex-grow: 1;
+    text-align: center;
+    color: white; /* Ensuring the text is visible on darker backgrounds */
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
