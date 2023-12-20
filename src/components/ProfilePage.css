@@ -1,0 +1,67 @@
+/* ProfilePage.css */
+body {
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+.content {
+    padding-top: 25px;
+}
+.profile-section {
+    border: 1px solid black;
+    background-color: white;
+    padding: 20px;
+    height: calc(50vh - 60px);
+    display: flex;
+    gap: 20px;
+}
+.profile-image {
+    background-color: #d8d8d8;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-left: 0;
+    margin-right: 15px;
+}
+.profile-name{
+        text-align: center;
+    margin-top: 10px;
+}
+.profile-bio {
+    flex-grow: 1;
+    text-align: left;
+    margin-top: 0;
+}
+.header {
+    border: 1px solid black;
+    background-color: white;
+    padding: 20px;
+    height: calc(50vh - 60px);
+}
+.b-header {
+    border: 1px solid black;
+    background-color: white;
+    padding: 20px;
+    height: calc(50vh - 60px);
+    margin-top: 15px;
+}
+.image-carousel {
+    background-color: white;
+    height: calc(50vh - 60px);
+}
+.image-carousel img {
+    object-fit: cover;
+    height: auto;
+    width: 100%;
+}
+.header-link {
+    border-top: 1px solid black;
+    padding: 10px;
+}
+.header-link:first-child {
+    border-top: none;
+}
