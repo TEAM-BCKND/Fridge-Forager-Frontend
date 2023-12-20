@@ -54,8 +54,7 @@ const IngredientForm = () => {
                     onChange={(e) => setStarch(e.target.value)}
                     placeholder="Starch"
                 />
-                <button type="submit" onClick={() => HandleSearch(protein, vegetable, starch)}>Search Recipes</button>
-
+                <button type="submit" onClick={HandleSearch(protein, vegetable, starch)}>Search Recipes</button>
             </form>
             <div className="about-section">
                 {/* Placeholder for about me section */}
