@@ -12,14 +12,14 @@ const IngredientForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         // Construct a query string with the ingredients
-        
+
         const queryParams = new URLSearchParams({
             protein,
             vegetable,
             starch
         }).toString();
         // Redirect to the search route with query parameters
-        navigate(`/ingredient-search?${queryParams}`);
+        navigate(`/RenderRecipes?${queryParams}`);
     };
 
     return (
