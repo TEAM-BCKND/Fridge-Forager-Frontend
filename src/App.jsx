@@ -12,7 +12,7 @@ import HandleSearch from './components/HandleSearch';
 
 import LaunchPage from './components/LaunchPage';
 import Footer from './components/Footer';
-import RenderRecipes from './components/RenderRecipes';
+import RenderRecipes from '/components/RenderRecipes';
 
 export default function App() {
     const [recipes, setRecipes] = useState([]);
