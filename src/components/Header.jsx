@@ -33,6 +33,7 @@ export default function Header(){
                 <Nav.Link as={Link} to="/profilepage">Profile Page</Nav.Link>
                 <Nav.Link as={Link} to="/launch">LaunchPage</Nav.Link>
                 <Nav.Link as={Link} to="/ingredient-search">Search</Nav.Link>
+                <Nav.Link as={Link} to="/RenderRecipes">Render Recipes</Nav.Link>
 
             </Nav>
             <Nav>
