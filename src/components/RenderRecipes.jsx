@@ -28,7 +28,7 @@ const RenderRecipes = () => {
                 console.log('Searching recipes with query:', apiUrl);
                 const response = await axios.get(apiUrl);
                 setSearchResults(response.data.recipes); // Assuming the response contains recipe data
-
+                console.log('data', response.data);
 
 
 
@@ -46,7 +46,7 @@ const RenderRecipes = () => {
             <h2>Rendered Recipes</h2>
 
             <p>
-                {JSON.stringify(searchResults)}
+                {JSON.stringify(searchResults, null, 2)}
 
             </p>
 
