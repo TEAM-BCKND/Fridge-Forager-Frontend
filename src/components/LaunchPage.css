@@ -1,0 +1,57 @@
+.launch-page {
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    background-image: url('/img/hotdog.jpg'); /* Replace with your image path */
+    animation: fadeIn 2s ease-in-out; /* Adjust the duration and easing as needed */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.launch-page h1 {
+    /* ... other styles ... */
+    animation: pulse 2s infinite;
+}
+
+.launch-page p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.launch-page ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.launch-page li {
+    margin-bottom: 5px;
+}
+
+.launch-page a {
+    color: #fff; /* Adjust link color */
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.launch-page a:hover {
+    color: #ff4500; /* Change color on hover */
+}
+
+
+/* Add any other styles as needed */
