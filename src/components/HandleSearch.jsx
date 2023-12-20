@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useSearchParams } from 'react-router-dom';
 import RecipeList from './RecipeList'
-import { use } from 'passport';
+
 
 const SearchResults = () => {
     const [searchResults, setSearchResults] = useState([]);
