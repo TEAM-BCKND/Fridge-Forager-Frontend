@@ -10,7 +10,7 @@ const RenderRecipes = (props) => {
   return (
     <div>
       <h2>Rendered Recipes</h2>
-      <RecipeList searchResults={props.searchResults || []} />
+      <RecipeList searchResults={props.searchResults || [0]} />
       
     </div>
   );
