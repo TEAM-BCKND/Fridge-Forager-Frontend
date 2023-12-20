@@ -57,8 +57,3 @@ function Landing() {
 
 }
 
-function ProfilePage() {
-    return (
-        <h1>UserProfile</h1>
-    )
-}
