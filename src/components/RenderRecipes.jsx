@@ -1,17 +1,20 @@
-
 import React from 'react';
-import { useLocation } from 'react-router-dom';
-import RecipeList from './RecipeList';
 
 const RenderRecipes = (props) => {
-  const location = useLocation();
-  const { searchResults } = location.state || {};
+  console.log(props.searchResults);
 
   return (
     <div>
       <h2>Rendered Recipes</h2>
-      <RecipeList searchResults={props.searchResults || [0]} />
-      
+      <ul>
+        {props.searchResults.map((recipe, index) => (
+          <li key={index}>
+            <h3>{recipe.title}</h3>
+            <p>Ingredients: {recipe.ingredients.join(', ')}</p>
+            <p>Instructions: {recipe.instructions}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
