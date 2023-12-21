@@ -7,32 +7,37 @@ import { Navigate } from 'react-router-dom';
 import DefaultPicture from './DendiFace.jpg';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
+
+const SERVER_API = import.meta.env.VITE_USER_SERVER_URL;
 
 export default function ProfilePage() {
 
     const [recipes, setRecipes] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [showCarousel, setShowCarousel] = useState(true);
+    const [userProfile, setUserProfile] = useState(null);
+    const { isAuthenticated, user, getAccessTokenSilently } = useAuth0();
 
 
     const fileInputRef = useRef(null);
     const recipeInputRef = useRef(null);
-    const { isAuthenticated } = useAuth0();
-    const { user } = useAuth0();
     const customUserData = "hell yeah";
     const userName = customUserData?.name;
     const userProfilePicture = customUserData?.picture;
     const userRecipes = [];
+    const userProfileUrl = `${SERVER_API}/users/${user.sub}`;
 
-    // useEffect(() => {
-    //   if (!isAuthenticated) {
-    //     alert('You must be logged in to view this page.');
-    //   }
-    // }, [isAuthenticated]);
+    useEffect(() => {
+        if (isAuthenticated) {
+            handleUserProfile();
+        }
+    }, [isAuthenticated, user]);
 
-    // if (!isAuthenticated) {
-    //     return <Navigate to="/" />;
-    // }
+    if (!isAuthenticated) {
+        return <Navigate to="/" />;
+    }
+
     useEffect(() => {
         console.log("Current Recipes:", recipes);
     }, [recipes]);
@@ -69,8 +74,39 @@ export default function ProfilePage() {
         setRecipes([...recipes, newRecipe]);
     
         console.log("Updated Recipes:", recipes);
+        console.log();
     };
     
+    const handleUserProfile = async () => {
+        try {
+            const token = await getAccessTokenSilently();
+            const response = await axios.get(`${SERVER_API}/users/${user.sub}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
+            if (response.data) {
+                setUserProfile(response.data);
+            } else {
+                const newUserProfile = {
+                    name: user.name,
+                    email: user.email,
+                    picture: user.picture
+                };
+
+                await axios.post(`${SERVER_API}/users`, newUserProfile, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+
+                setUserProfile(newUserProfile);
+            }
+        } catch (error) {
+            console.error("Error handling user profile", error);
+        }
+    };
 
     return (
         <div>
@@ -89,7 +125,7 @@ export default function ProfilePage() {
                         </div>
                         <textarea
                             className="profile-bio form-control mb-2"
-                            placeholder="Your bio here"
+                            placeholder={userProfile?.bio || "Your bio here"}
                             rows={6}
                         />
                         <input 
