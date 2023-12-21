@@ -26,17 +26,17 @@ export default function ProfilePage() {
     const userName = customUserData?.name;
     const userProfilePicture = customUserData?.picture;
     const userRecipes = [];
-    const userProfileUrl = `${SERVER_API}/users/${user.sub}`;
+    // const userProfileUrl = `${SERVER_API}/users/${user.sub}`;
 
-    useEffect(() => {
-        if (isAuthenticated) {
-            handleUserProfile();
-        }
-    }, [isAuthenticated, user]);
+    // useEffect(() => {
+    //     if (isAuthenticated) {
+    //         handleUserProfile();
+    //     }
+    // }, [isAuthenticated, user]);
 
-    if (!isAuthenticated) {
-        return <Navigate to="/" />;
-    }
+    // if (!isAuthenticated) {
+    //     return <Navigate to="/" />;
+    // }
 
     useEffect(() => {
         console.log("Current Recipes:", recipes);
@@ -61,9 +61,26 @@ export default function ProfilePage() {
         fileInputRef.current.click();
     };
 
-    const handleProfileImageUpload = (event) => {
-        console.log(event.target.files[0]);
-
+    const handleProfileImageUpload = async (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+    
+        try {
+            const formData = new FormData();
+            formData.append('image', file);
+    
+            const token = await getAccessTokenSilently();
+            const response = await axios.post(`${SERVER_API}/upload-profile-image`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    Authorization: `Bearer ${token}`
+                }
+            });
+    
+            setUserProfile({ ...userProfile, picture: response.data.imageUrl });
+        } catch (error) {
+            console.error("Error uploading image", error);
+        }
     };
 
     const handleRecipeUpload = (event) => {
@@ -74,7 +91,6 @@ export default function ProfilePage() {
         setRecipes([...recipes, newRecipe]);
     
         console.log("Updated Recipes:", recipes);
-        console.log();
     };
     
     const handleUserProfile = async () => {
@@ -116,12 +132,12 @@ export default function ProfilePage() {
                     <div className="profile-section">
                         <div className="d-flex align-items-center">
                             <img 
-                                src={userProfilePicture || DefaultPicture}
+                                src={userProfile?.picture || DefaultPicture}
                                 alt="Profile Pic" 
                                 className="profile-image me-3"
                                 onClick={handleProfileImageClick}
                             />
-                            <div className="profile-name">{userName || 'Anonymous'}</div>
+                            <div className="profile-name">{userProfile?.name || 'Anonymous'}</div>
                         </div>
                         <textarea
                             className="profile-bio form-control mb-2"
