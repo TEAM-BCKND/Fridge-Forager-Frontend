@@ -15,7 +15,9 @@ export default function RecipeUploadModal({ show, handleClose, handleRecipeSubmi
     };
 
     const handleImageChange = (e) => {
-        setRecipeData({ ...recipeData, image: e.target.files[0] });
+        const file = e.target.files[0];
+        const imageUrl = file ? URL.createObjectURL(file) : null;
+        setRecipeData({ ...recipeData, image: imageUrl });
     };
 
     const submitRecipe = () => {

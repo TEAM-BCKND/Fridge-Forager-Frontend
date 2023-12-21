@@ -6,6 +6,7 @@ body {
 }
 .content {
     padding-top: 25px;
+    flex-grow: 1;
 }
 .profile-section {
     border: 1px solid black;
@@ -14,6 +15,8 @@ body {
     height: calc(50vh - 60px);
     display: flex;
     gap: 20px;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the start of the flex container */
 }
 .profile-image {
     background-color: #d8d8d8;
@@ -28,14 +31,18 @@ body {
     margin-right: 15px;
 }
 .profile-name{
-        text-align: center;
+    text-align: center;
     margin-top: 10px;
+    font-size: 32px;
 }
 .profile-bio {
     flex-grow: 1;
     text-align: left;
     margin-top: 0;
+    height: auto;
+    width: 100%;
 }
+
 .header {
     border: 1px solid black;
     background-color: white;
@@ -50,18 +57,45 @@ body {
     margin-top: 15px;
 }
 .image-carousel {
-    background-color: white;
-    height: calc(50vh - 60px);
+    max-height: 500px; /* Adjust this value as needed */
+    overflow-y: auto; /* Add vertical scroll if content is taller than max-height */
 }
 .image-carousel img {
     object-fit: cover;
     height: auto;
     width: 100%;
 }
-.header-link {
-    border-top: 1px solid black;
-    padding: 10px;
+.recipe-list {
+    max-height: 800px; /* Adjust based on your layout */
+    overflow-y: auto; /* Enables vertical scrolling */
+    /* Other styles... */
 }
-.header-link:first-child {
-    border-top: none;
+.card-img-top {
+    max-height: 250px; /* Adjust as needed */
+    object-fit: cover; /* Keeps the aspect ratio */
+    width: 90%; /* Image takes up 80% of card width */
+    margin: 0 auto; /* Centers the image horizontally */
+    display: block; /* Needed to apply margin auto */
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust the minmax values as needed */
+    gap: 10px;
+}
+
+.gallery-item {
+    /* Styles for individual gallery items */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Optional, depending on your preference */
 }
