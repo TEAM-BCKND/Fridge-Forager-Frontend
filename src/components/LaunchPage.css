@@ -31,6 +31,7 @@
 .launch-page p {
     font-size: 1.2rem;
     margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .launch-page ul {
@@ -40,6 +41,7 @@
 
 .launch-page li {
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
 .launch-page a {

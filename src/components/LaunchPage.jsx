@@ -4,8 +4,9 @@ import './LaunchPage.css'; // Import the CSS file for styling
 
 const backgroundImages = [
     '/img/hotdog.jpg',
-    '/img/database-schema.png',
-    '/img/domain-model.png',
+    '/img/fridge1.jpg',
+    '/img/fridge2.jpg',
+    '/img/fridge3.jpg',
     // Add more image URLs as needed
 ];
 
