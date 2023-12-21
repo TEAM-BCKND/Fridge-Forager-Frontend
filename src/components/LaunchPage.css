@@ -7,8 +7,6 @@
     align-items: center;
     justify-content: center;
     color: #000;
-    background-image: url('/img/hotdog.jpg'); /* Replace with your image path */
-    animation: fadeIn 2s ease-in-out; /* Adjust the duration and easing as needed */
 }
 
 @keyframes pulse {
