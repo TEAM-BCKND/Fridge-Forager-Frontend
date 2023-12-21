@@ -1,3 +1,14 @@
+.search-container h2 {
+    color: #333;
+    text-align: center;
+}
+
+.search-container p {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #666;
+}
+
 .search-container {
     max-width: 600px;
     margin: auto;
@@ -7,22 +18,20 @@
     background: #fff;
 }
 
-.profile-section,
-.about-section {
-    display: none; 
-}
 
 input[type="text"] {
-    width: 100%;
+    width: calc(100% - 22px); 
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px; 
     border: 1px solid #ccc;
     border-radius: 4px;
+    box-sizing: border-box; 
 }
 
 button {
-    width: 100%;
+    width: calc(100% - 22px); 
     padding: 10px;
+    margin-top: 10px; 
     background-color: #007bff;
     color: white;
     border: none;
@@ -30,8 +39,10 @@ button {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
+    box-sizing: border-box; 
 }
 
 button:hover {
     background-color: #0056b3;
 }
+
