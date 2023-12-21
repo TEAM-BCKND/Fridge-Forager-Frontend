@@ -16,11 +16,35 @@ import Gallery from './components/Gallery';
 
 export default function App() {
     const [recipes, setRecipes] = useState([]);
-
+    const {
+        isAuthenticated,
+        user,
+      } = useAuth0();
     //Calls API to fetch recipes and updates with results
     //Use '/ingredient-search' in search bar
     const handleSearch = async (ingredients) => {
     };
+
+    const [likes, setLikes] = useState({});
+    const [comments, setComments] = useState({});
+  
+    const handleLike = (id) => {
+      setLikes(prevLikes => ({
+        ...prevLikes,
+        [id]: (prevLikes[id] || 0) + 1
+      }));
+    }
+    
+    const handleComment = (e, id) => {
+       
+      e.preventDefault();
+      const userName = isAuthenticated ? user.name : 'Guest User';
+      const comment = e.target.elements.comment.value + ' - ' + userName;
+      setComments(prevComments => ({
+        ...prevComments,
+        [id]: [...(prevComments[id] || []), comment]  
+      }));
+    }
 
     return (
         <div>
@@ -32,7 +56,7 @@ export default function App() {
                     <Route path="/home" element={<LaunchPage />} />
 
                     <Route path="/search" element={<HandleSearch />} />
-                    <Route path="/gallery" element={<Gallery />} />
+                    <Route path="/gallery" element={<Gallery likes={likes} comments={comments} handleLike={handleLike} handleComment={handleComment} />} />
                     <Route path="/RenderRecipes" element={<RenderRecipes />} />
                     {/* Add IngredientForm in one of the routes or in the Home component */}
 

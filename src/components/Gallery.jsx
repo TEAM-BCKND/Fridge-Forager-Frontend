@@ -1,8 +1,13 @@
+
+import { useAuth0 } from '@auth0/auth0-react';
 import React, { useState } from 'react';
 import { Card, CardGroup, Row } from 'react-bootstrap';
 
-const PhotoGallery = () => {
-
+const PhotoGallery = ({likes, comments, handleLike, handleComment}) => {
+  const {
+    isAuthenticated,
+    user,
+  } = useAuth0();
   const photos = [
     {
       id: 1,
@@ -22,24 +27,7 @@ const PhotoGallery = () => {
     // more photos
   ];
 
-  const [likes, setLikes] = useState({});
-  const [comments, setComments] = useState({});
-
-  const handleLike = (id) => {
-    setLikes(prevLikes => ({
-      ...prevLikes,
-      [id]: (prevLikes[id] || 0) + 1
-    }));
-  }
   
-  const handleComment = (e, id) => {
-    e.preventDefault();
-    const comment = e.target.elements.comment.value;
-    setComments(prevComments => ({
-      ...prevComments,
-      [id]: [...(prevComments[id] || []), comment]  
-    }));
-  }
 
   return (
     <CardGroup>
