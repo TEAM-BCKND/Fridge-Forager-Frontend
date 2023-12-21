@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import HandleSearch from './HandleSearch';
+import './IngredientForm.css';
 
 //ChatGPT was consulted for this function
 

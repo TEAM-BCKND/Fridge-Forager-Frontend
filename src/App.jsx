@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 import RenderRecipes from './components/RenderRecipes';
 import Gallery from './components/Gallery';
 
+
 export default function App() {
     const [recipes, setRecipes] = useState([]);
 
