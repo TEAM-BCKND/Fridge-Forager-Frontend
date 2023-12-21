@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import HandleSearch from './HandleSearch';
 import './IngredientForm.css';
 
+
 //ChatGPT was consulted for this function
 
 const IngredientForm = () => {
@@ -27,41 +28,29 @@ const IngredientForm = () => {
 
     return (
         <div className="search-container">
-            <div className="profile-section">
-                <div className="profile-picture">
-                    {/* Placeholder for profile picture */}
-                </div>
-                <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Name"
-                />
-            </div>
+            <h2>Find a Recipe</h2> {/* Title for the form */}
+            <p>Enter the ingredients you have, and we'll find recipes that match.</p> {/* Instructional text */}
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
                     value={protein}
                     onChange={(e) => setProtein(e.target.value)}
-                    placeholder="Protein"
+                    placeholder="Enter a protein (e.g., chicken)"
                 />
                 <input
                     type="text"
                     value={vegetable}
                     onChange={(e) => setVegetable(e.target.value)}
-                    placeholder="Vegetable"
+                    placeholder="Enter a vegetable (e.g., broccoli)"
                 />
                 <input
                     type="text"
                     value={starch}
                     onChange={(e) => setStarch(e.target.value)}
-                    placeholder="Starch"
+                    placeholder="Enter a starch (e.g., rice)"
                 />
-                <button type="submit" >Search Recipes</button>
+                <button type="submit">Search Recipes</button>
             </form>
-            <div className="about-section">
-                {/* Placeholder for about me section */}
-            </div>
         </div>
     );
 };
