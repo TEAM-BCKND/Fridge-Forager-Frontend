@@ -7,6 +7,7 @@ const backgroundImages = [
     '/img/fridge1.png',
     '/img/fridge2.png',
     '/img/fridge3.png',
+    '/img/fridge1resize.png',
     // Add more image URLs as needed
 ];
 
