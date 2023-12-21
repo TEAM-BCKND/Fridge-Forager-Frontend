@@ -26,6 +26,8 @@ const RenderRecipes = () => {
                 const response = await axios.get(apiUrl);
                 
                 console.log('API Response:', response.data);
+                console.log('API Response:', response.data.recipes.image);
+                console.log('API Response:', response.data.recipes.images);
 
         if (response.data.recipes && Array.isArray(response.data.recipes.hits)) {
           const recipes = response.data.recipes.hits.map(hit => hit.recipe);
