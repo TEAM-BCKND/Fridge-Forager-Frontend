@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
-import { Card, CardGroup } from 'react-bootstrap';
+import { Card, CardGroup, Row } from 'react-bootstrap';
 
 const PhotoGallery = () => {
 
   const photos = [
     {
       id: 1,
-      src: 'https://ik.imagekit.io/army007/iCloud%20Photos/iCloud%20Photos/984.jpeg?updatedAt=1703123528173',
-      caption: 'Photo 1'
+      src: 'https://ik.imagekit.io/army007/iCloud%20Photos/iCloud%20Photos/IMG_1514.JPEG?updatedAt=1703123622235',
+      caption: 'Surf N Turf'
     },
     {
       id: 2, 
       src: 'https://ik.imagekit.io/army007/iCloud%20Photos/iCloud%20Photos/IMG_1228.JPEG?updatedAt=1703123569288',
-      caption: 'Photo 2'
+      caption: 'Steak and kale salad'
     },
     {
-      id: 2, 
+      id: 3, 
       src: 'https://ik.imagekit.io/army007/iCloud%20Photos/iCloud%20Photos/IMG_1358.JPEG?updatedAt=1703124860273',
-      caption: 'Photo 3'
+      caption: 'Gnocchi & Meatballs'
     },
     // more photos
   ];
