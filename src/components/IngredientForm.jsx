@@ -15,21 +15,19 @@ const IngredientForm = () => {
     const handleSubmit = (event) => {
         console.log('Submitting form...');
         event.preventDefault();
-        // Construct a query string with the ingredients
 
         const queryParams = new URLSearchParams({
             protein,
             vegetable,
             starch
         }).toString();
-        // Redirect to the search route with query parameters
         navigate(`/RenderRecipes?${queryParams}`);
     };
 
     return (
         <div className="search-container">
-            <h2>Find a Recipe</h2> {/* Title for the form */}
-            <p>Enter the ingredients you have, and we'll find recipes that match.</p> {/* Instructional text */}
+            <h2>Find a Recipe</h2> 
+            <p>Enter the ingredients you have, and we'll find recipes that match.</p> 
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
