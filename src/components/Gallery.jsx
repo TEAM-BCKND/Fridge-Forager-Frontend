@@ -72,11 +72,13 @@ const PhotoGallery = ({likes, comments, handleLike, handleComment}) => {
   });
 
   return (
+
     <Container className="d-flex flex-column min-vh-100">
       {/* Header */}
       <header className="mb-4">
         {/* Your header content */}
       </header>
+
 
       {/* Photo Gallery */}
       <div className="flex-grow-1 d-flex justify-content-center align-items-center">

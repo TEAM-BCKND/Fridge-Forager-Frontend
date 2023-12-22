@@ -48,10 +48,16 @@ const RenderRecipes = () => {
             handleSearch();
         }
     }, [searchParams]);
+    
 
     return (
         <div>
             <h2>Rendered Recipes</h2>
+            <p>
+                <a href="https://highmid-fridge-platformer.netlify.app" target="_blank" rel="noopener noreferrer">
+                    Visit our Fridge Platformer Game while you wait
+                </a>
+            </p>
             {isLoading ? (
                 <p>Loading recipes....</p>
             ) : error ? (
@@ -60,7 +66,6 @@ const RenderRecipes = () => {
                 <div className="recipes-container">
                     {searchResults.map((recipe, index) => (
                         <div key={index} className="recipe-card">
-                            <img src={recipe.image} alt="Recipe" className="recipe-image"/>
                             <div className="recipe-details">
                                 <h3>{recipe.label}</h3>
                                 <ul>

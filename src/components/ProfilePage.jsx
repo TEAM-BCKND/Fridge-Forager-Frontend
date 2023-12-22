@@ -4,50 +4,46 @@ import RecipeUploadModal from './RecipeUploadModal';
 import Carousel from 'react-bootstrap/Carousel';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Navigate } from 'react-router-dom';
-import DefaultPicture from './DendiFace.jpg';
+import DefaultPicture from './tiny_foodie_profilepic.png';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
+import Brett from './brett_picture.jpg';
 
-export default function ProfilePage() {
 
-    const [recipes, setRecipes] = useState([]);
+
+export default function ProfilePage({addRecipe , recipes}) {
+
+    const [bio , setBio] = useState("");
+    
     const [showModal, setShowModal] = useState(false);
     const [showCarousel, setShowCarousel] = useState(true);
-
+    const [userProfile, setUserProfile] = useState(null);
+    const { isAuthenticated, user, getAccessTokenSilently } = useAuth0();
 
     const fileInputRef = useRef(null);
     const recipeInputRef = useRef(null);
-    const { isAuthenticated } = useAuth0();
-    const { user } = useAuth0();
-    const customUserData = "hell yeah";
-    const userName = customUserData?.name;
-    const userProfilePicture = customUserData?.picture;
-    const userRecipes = [];
+    
+
 
     // useEffect(() => {
-    //   if (!isAuthenticated) {
-    //     alert('You must be logged in to view this page.');
-    //   }
-    // }, [isAuthenticated]);
+    //     if (isAuthenticated) {
+    //         handleUserProfile();
+    //     }
+    // }, [isAuthenticated, user]);
 
     // if (!isAuthenticated) {
     //     return <Navigate to="/" />;
     // }
+
     useEffect(() => {
         console.log("Current Recipes:", recipes);
     }, [recipes]);
 
-    const handleRecipeSubmit = (recipeData) => {
-        setRecipes([...recipes, { 
-            id: recipes.length + 1, 
-            title: recipeData.name, 
-            image: recipeData.image,
-            ingredients: recipeData.ingredients,
-            instructions: recipeData.instructions
-        }]);
-        setShowModal(false);
-    };
-    
+    function handleRecipeSubmit(recipeData){
+        addRecipe(recipeData);
+    }
+
     const toggleDisplay = () => {
         setShowCarousel(!showCarousel);
     };
@@ -56,9 +52,26 @@ export default function ProfilePage() {
         fileInputRef.current.click();
     };
 
-    const handleProfileImageUpload = (event) => {
-        console.log(event.target.files[0]);
-
+    const handleProfileImageUpload = async (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+    
+        try {
+            const formData = new FormData();
+            formData.append('image', file);
+    
+            const token = await getAccessTokenSilently();
+            const response = await axios.post(`${SERVER_API}/upload-profile-image`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    Authorization: `Bearer ${token}`
+                }
+            });
+    
+            setUserProfile({ ...userProfile, picture: response.data.imageUrl });
+        } catch (error) {
+            console.error("Error uploading image", error);
+        }
     };
 
     const handleRecipeUpload = (event) => {
@@ -66,11 +79,10 @@ export default function ProfilePage() {
         console.log(file);
     
         const newRecipe = { id: recipes.length + 1, title: file.name };
-        setRecipes([...recipes, newRecipe]);
+
     
         console.log("Updated Recipes:", recipes);
     };
-    
 
     return (
         <div>
@@ -80,18 +92,13 @@ export default function ProfilePage() {
                     <div className="profile-section">
                         <div className="d-flex align-items-center">
                             <img 
-                                src={userProfilePicture || DefaultPicture}
+                                src={Brett || DefaultPicture}
                                 alt="Profile Pic" 
                                 className="profile-image me-3"
                                 onClick={handleProfileImageClick}
                             />
-                            <div className="profile-name">{userName || 'Anonymous'}</div>
+                            <div className="profile-name">{userProfile?.name || 'Brett Fort'}</div>
                         </div>
-                        <textarea
-                            className="profile-bio form-control mb-2"
-                            placeholder="Your bio here"
-                            rows={6}
-                        />
                         <input 
                             type="file"
                             ref={fileInputRef}
@@ -116,7 +123,7 @@ export default function ProfilePage() {
                                     <Card key={recipe.id} className="mb-3">
                                         <Card.Img variant="top" src={recipe.image} alt="Recipe Image" />
                                         <Card.Body>
-                                            <Card.Title>{recipe.title}</Card.Title>
+                                            <Card.Title>{recipe.name}</Card.Title>
                                             {/* Add more details as needed */}
                                         </Card.Body>
                                     </Card>
@@ -152,7 +159,7 @@ function CarouselComponent({ recipes }) {
                         <Carousel.Item key={index}>
                             <img className="d-block w-100" src={recipe.image || DefaultPicture} alt="Recipe" />
                             <Carousel.Caption>
-                                <h3>{recipe.title || 'Untitled Recipe'}</h3>
+                                <h3>{recipe.name || 'Untitled Recipe'}</h3>
                             </Carousel.Caption>
                         </Carousel.Item>
                     ))

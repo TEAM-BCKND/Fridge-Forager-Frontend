@@ -36,12 +36,9 @@ export default function Header(){
             </Nav>
             <Nav>
             <AuthButtons className="auth-buttons"/>
-                <NavDropdown title="More" id="basic-nav-dropdown" align="end">
-                    <NavDropdown.Item href="#action/3.1">Something</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">Happens</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">Here</NavDropdown.Item>
+                <NavDropdown title="" id="basic-nav-dropdown" align="end">
                     <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.4">This is a Link</NavDropdown.Item>
+                    <NavDropdown.Item href="https://highmid-fridge-platformer.netlify.app">Fridge Game?</NavDropdown.Item>
                 </NavDropdown>
             </Nav>
         </Navbar>
