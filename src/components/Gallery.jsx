@@ -30,6 +30,7 @@ const PhotoGallery = ({likes, comments, handleLike, handleComment}) => {
   
 
   return (
+    
     <CardGroup>
       {photos.map(photo => (
         <Card key={photo.id}>
