@@ -15,8 +15,20 @@ import Gallery from './components/Gallery';
 
 
 export default function App() {
-    const [recipes, setRecipes] = useState([]);
 
+    const initialRecipe = {
+        name: 'Chicken Biryani',
+        image: 'https://static.wixstatic.com/media/91e241_76e634b7ab52498e82533ba79b747b55~mv2.jpg/v1/fill/w_640,h_426,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/91e241_76e634b7ab52498e82533ba79b747b55~mv2.jpg',
+        ingredients: 'Chicken, rice',
+        instructions: 'Put the boiling water in a saucepan, add the washed rice, boil for 5 minutes and drain. Layer the chicken mixture with the rice starting with the rice then the chicken mixture and repeat this twice. Garnish with cumin seeds, and ginger. Lower the heat and simmer for a further 10 minutes.'
+    };
+    const [recipes, setRecipes] = useState([initialRecipe]);
+
+
+    function addRecipe(newRecipe){
+        console.log(newRecipe);
+        setRecipes([...recipes, newRecipe]);
+    }
     //Calls API to fetch recipes and updates with results
     //Use '/ingredient-search' in search bar
     const handleSearch = async (ingredients) => {
@@ -37,7 +49,7 @@ export default function App() {
                     {/* Add IngredientForm in one of the routes or in the Home component */}
 
                     <Route path="/ingredient-search" element={<IngredientForm onSearch={handleSearch} />} />
-                    <Route path="/profilepage" element={<ProfilePage />} />
+                    <Route path="/profilepage" element={<ProfilePage addRecipe={addRecipe} recipes={recipes}/>} />
 
                 </Routes>
                 </div>

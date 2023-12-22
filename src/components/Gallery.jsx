@@ -42,6 +42,7 @@ const PhotoGallery = () => {
   }
 
   return (
+    
     <CardGroup>
       {photos.map(photo => (
         <Card key={photo.id}>
