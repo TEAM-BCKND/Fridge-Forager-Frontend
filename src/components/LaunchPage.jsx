@@ -3,10 +3,10 @@ import React, { useState, useEffect } from 'react';
 import './LaunchPage.css'; // Import the CSS file for styling
 
 const backgroundImages = [
-    'https://ik.imagekit.io/army007/iCloud%20Photos/iCloud%20Photos/IMG_1531.JPEG?updatedAt=1703123624378',
-    '/img/fridge1.jpeg',
-    '/img/fridge2.jpeg',
-    '/img/fridge3.jpeg'
+    'https://ik.imagekit.io/army007/iCloud%20Photos/iCloud%20Photos/hotdog.jpg?updatedAt=1703214258785',
+    'https://ik.imagekit.io/army007/iCloud%20Photos/iCloud%20Photos/fridge3.jpg?updatedAt=1703214258858',
+    'https://ik.imagekit.io/army007/iCloud%20Photos/iCloud%20Photos/fridge1.jpg?updatedAt=1703214258847',
+    'https://ik.imagekit.io/army007/iCloud%20Photos/iCloud%20Photos/fridge2%20(1).jpg?updatedAt=1703214258136'
 
     // Add more image URLs as needed
 ];
