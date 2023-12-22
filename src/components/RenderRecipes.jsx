@@ -48,10 +48,16 @@ const RenderRecipes = () => {
             handleSearch();
         }
     }, [searchParams]);
+    
 
     return (
         <div>
             <h2>Rendered Recipes</h2>
+            <p>
+                <a href="https://highmid-fridge-platformer.netlify.app" target="_blank" rel="noopener noreferrer">
+                    Visit our Fridge Platformer Game while you wait
+                </a>
+            </p>
             {isLoading ? (
                 <p>Loading recipes....</p>
             ) : error ? (
