@@ -66,7 +66,6 @@ const RenderRecipes = () => {
                 <div className="recipes-container">
                     {searchResults.map((recipe, index) => (
                         <div key={index} className="recipe-card">
-                            <img src={recipe.image} alt="Recipe" className="recipe-image"/>
                             <div className="recipe-details">
                                 <h3>{recipe.label}</h3>
                                 <ul>
