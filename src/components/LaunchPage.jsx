@@ -3,10 +3,10 @@ import React, { useState, useEffect } from 'react';
 import './LaunchPage.css'; // Import the CSS file for styling
 
 const backgroundImages = [
-    './../img/hotdog.jpeg',
-    './../img/fridge1.jpeg',
-    './../img/fridge2.jpeg',
-    './../img/fridge3.jpeg'
+    '/img/hotdog.jpeg',
+    '/img/fridge1.jpeg',
+    '/img/fridge2.jpeg',
+    '/img/fridge3.jpeg'
 
     // Add more image URLs as needed
 ];
